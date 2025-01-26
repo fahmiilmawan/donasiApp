@@ -12,7 +12,7 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        $campaigns = Campaign::all();
+        $campaigns = Campaign::limit(6)->get();
         return view('landing-page.welcome',compact('campaigns'));
     }
 

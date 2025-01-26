@@ -32,10 +32,10 @@ class DonationController extends Controller
      * Show the form for creating a new resource.
      */
 
-     public function createUser()
+     public function createUser($id)
      {
-        $campaigns = Campaign::all();
-         return view('donation.donation-user',compact('campaigns'));
+        $campaign = Campaign::findOrFail($id);
+         return view('donation.donation-user',compact('campaign'));
      }
 
     /**

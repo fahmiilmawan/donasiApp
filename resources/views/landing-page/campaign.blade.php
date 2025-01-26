@@ -19,7 +19,7 @@
                         <h2 class="card-title">{{ $campaign->judul }}</h2>
                         <p>{{ $campaign->deskripsi }}</p>
                         <div class="card-actions justify-end">
-                           <a href="{{ route('index.createDonasiUser', $campaign->id) }}" class="btn btn-success text-white">Donasi</a>
+                           <a href="{{ route('donation.create-user', $campaign->id) }}" class="btn btn-success text-white">Donasi</a>
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class,'index']);
 Route::get('/campaign',[LandingPageController::class,'showAllCampaign'])->name('index.showCampaign');
-Route::get('/campaign/{id}',[LandingPageController::class,'createDonasiUser'])->name('index.createDonasiUser');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,7 +33,7 @@ Route::get('/destroy/{id}',[CampaignController::class,'destroy'])->name('campaig
 
 
 Route::prefix('donation')->group(function(){
-    Route::get('/create-user',[DonationController::class,'createUser'])->name('donation.create-user');
+    Route::get('/create-user/{id}',[DonationController::class,'createUser'])->name('donation.create-user');
     Route::post('/store-user',[DonationController::class,'storeUser'])->name('donation.store-user');
     Route::get('/show-user/{id}',[DonationController::class,'showUser'])->name('donation.show-user');
     Route::get('/after-payment',[DonationController::class,'afterPayment'])->name('donation.after-payment');

@@ -11,7 +11,7 @@
                     harapan dan senyuman kepada anak-anak yang membutuhkan serta lansia yang mungkin merasa
                     terabaikan.
                 </p>
-                <a href="{{ route('donation.create-user') }}" class="btn btn-success text-white">Donasi Sekarang!</a>
+                <a href="{{ route('index.showCampaign') }}" class="btn btn-success text-white">Donasi Sekarang!</a>
             </div>
         </div>
     </div>
@@ -41,7 +41,8 @@
             </div>
         </div>
     </div>
-    <div class="container">
+
+    <div class="container my-10">
         <div class="text-center underline my-5" style="font-size: 50px;">
             <h5>Apa yang bisa kita bantu?</h5>
         </div>
@@ -106,13 +107,17 @@
                         <h2 class="card-title">{{ $campaign->judul }}</h2>
                         <p>{{ $campaign->deskripsi }}</p>
                         <div class="card-actions justify-end">
-                            <button class="btn btn-primary">Buy Now</button>
                         </div>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
+        <div class="text-center mt-10 w-full">
+            <a href="{{ route('index.showCampaign') }}" class="btn btn-lg btn-success text-white">Lihat Selengkapnya</a>
+        </div>
     </div>
+
+
 @endsection
 
