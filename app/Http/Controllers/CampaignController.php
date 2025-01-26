@@ -52,6 +52,8 @@ class CampaignController extends Controller
      */
     public function show(string $id)
     {
+        $campaigns = Campaign::findOrFail($id);
+        return view('campaign.show',compact('campaigns'));
     }
 
     /**

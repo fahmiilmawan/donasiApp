@@ -21,6 +21,11 @@
                         {{ __('Campaign') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('donation-admin.index')" :active="request()->routeIs('donation-admin.index')">
+                        {{ __('Donation') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

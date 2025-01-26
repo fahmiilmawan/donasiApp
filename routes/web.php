@@ -1,19 +1,20 @@
 <?php
 
 use App\Http\Controllers\CampaignController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DonationAdminController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Campaign;
 use Illuminate\Support\Facades\Route;
 
+//Landing Page
 Route::get('/', [LandingPageController::class,'index']);
 Route::get('/campaign',[LandingPageController::class,'showAllCampaign'])->name('index.showCampaign');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth','verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -21,6 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+//Campaign
 Route::prefix('campaign')->group(function(){
     Route::get('/index',[CampaignController::class,'index'])->name('campaign.index');
     Route::get('/create',[CampaignController::class,'create'])->name('campaign.create');
@@ -31,7 +33,19 @@ Route::prefix('campaign')->group(function(){
 Route::get('/destroy/{id}',[CampaignController::class,'destroy'])->name('campaign.destroy');
 })->middleware(['auth']);
 
+//Donation Admin
+Route::prefix('donation')->group(function(){
+    Route::get('/index',[DonationAdminController::class,'index'])->name('donation-admin.index');
+    Route::get('/create',[DonationAdminController::class,'create'])->name('donation-admin.create');
+    Route::post('/store',[DonationAdminController::class,'store'])->name('donation-admin.store');
+    Route::get('/show/{id}',[DonationAdminController::class,'show'])->name('donation-admin.show');
+    Route::get('/edit/{id}',[DonationAdminController::class,'edit'])->name('donation-admin.edit');
+    Route::put('/update/{id}',[DonationAdminController::class,'update'])->name('donation-admin.update');
+    Route::get('/destroy/{id}',[DonationAdminController::class,'destroy'])->name('donation-admin.destroy');
 
+});
+
+//Donation User
 Route::prefix('donation')->group(function(){
     Route::get('/create-user/{id}',[DonationController::class,'createUser'])->name('donation.create-user');
     Route::post('/store-user',[DonationController::class,'storeUser'])->name('donation.store-user');

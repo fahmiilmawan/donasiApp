@@ -14,6 +14,8 @@
                 <div class="card-body">
                   <h2 class="card-title">{{ $campaign->judul }}</h2>
                   <p>{{ $campaign->deskripsi }}</p>
+                  <h5 class="h5">Donasi Terkumpul: {{ 'Rp ' . number_format($campaign->donasi_terkumpul, 0, ',', '.') }}</h5>
+                  <h5 class="h5">Target Donasi: {{ 'Rp ' . number_format($campaign->target_donasi, 0, ',', '.') }}</h5>
                   <form id="donationForm" action="{{ route('donation.store-user') }}" method="POST">
                       @csrf
                       <div class="p-10">

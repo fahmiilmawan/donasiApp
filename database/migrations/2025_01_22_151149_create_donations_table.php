@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('campaign_id');
             $table->foreign('campaign_id')->references('id')->on('campaigns')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('order_id');
             $table->integer('jumlah_donasi');
             $table->string('nama_donatur');
             $table->string('email_donatur');

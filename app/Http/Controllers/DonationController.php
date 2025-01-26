@@ -45,6 +45,7 @@ class DonationController extends Controller
     {
       $donations = Donation::create([
         'campaign_id' => $request->campaign_id,
+        'order_id' => rand(),
         'nama_donatur' => $request->nama_donatur,
         'email_donatur' => $request->email_donatur,
         'no_hp_donatur' => $request->no_hp_donatur,
@@ -62,7 +63,7 @@ class DonationController extends Controller
 
       $params = [
         'transaction_details' => [
-            'order_id' => $donations->id,
+            'order_id' => $donations->order_id,
             'gross_amount' => $donations->jumlah_donasi,
         ],
         'customer_details' => [
@@ -77,7 +78,7 @@ class DonationController extends Controller
     $donations->snap_token = $snapToken;
     $donations->save();
 
-    return redirect()->route('donation.show-user', $donations->id);
+    return redirect()->route('donation.show-user', $donations->order_id);
 
 
     }
@@ -88,7 +89,7 @@ class DonationController extends Controller
      */
     public function showUser(string $id)
     {
-        $donation = Donation::findOrFail($id);
+        $donation = Donation::where('order_id', $id)->first();
         return view('donation.detail-donation-user',compact('donation'));
     }
 
@@ -98,14 +99,19 @@ class DonationController extends Controller
         $transaction_status = $request->transaction_status;
         $order_id = $request->order_id;
 
-        $donation = Donation::findOrFail($order_id);
+        $donation = Donation::where('order_id', $order_id)->first();
         if ($transaction_status == 'settlement' && $status_code == 200) {
+
+            $donation->jumlah_donasi;
+            $donation->campaign->donasi_terkumpul;
+
+            $donation->campaign->donasi_terkumpul += $donation->jumlah_donasi;
+            $donation->campaign->save();
             $donation->status = 'success';
             $donation->save();
         } else {
             $donation->status = 'failed';
             $donation->save();
-
         }
         return view('donation.after-payment');
     }
