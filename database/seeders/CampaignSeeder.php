@@ -21,6 +21,7 @@ class CampaignSeeder extends Seeder
             'donasi_terkumpul' => 1500000,
             'tanggal_dimulai' => '2023-01-01',
             'tanggal_berakhir' => '2023-12-31',
+
         ]);
 
         Campaign::create([

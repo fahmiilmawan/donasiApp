@@ -14,6 +14,7 @@ class Campaign extends Model
         'donasi_terkumpul',
         'tanggal_dimulai',
         'tanggal_berakhir',
+        'foto',
     ];
 
     public function donations()

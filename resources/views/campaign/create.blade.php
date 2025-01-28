@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-span-2">
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-5 p-6">
-                        <form action="{{ route('campaign.store') }}" method="POST" class="space-y-6">
+                        <form action="{{ route('campaign.store') }}" method="POST" class="space-y-6" enctype="multipart/form-data">
                             @csrf
                             <div>
                                 <label for="judul" class="label">Judul Campaign</label>

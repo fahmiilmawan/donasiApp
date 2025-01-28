@@ -28,6 +28,7 @@ class UpdateCampaignRequest extends FormRequest
             'donasi_terkumpul' => 'required',
             'tanggal_dimulai' => 'required',
             'tanggal_berakhir' => 'required',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ];
     }
 
@@ -40,6 +41,9 @@ class UpdateCampaignRequest extends FormRequest
             'donasi_terkumpul.required' => 'Donasi terkumpul wajib diisi',
             'tanggal_dimulai.required' => 'Tanggal dimulai wajib diisi',
             'tanggal_berakhir.required' => 'Tanggal berakhir wajib diisi',
+            'foto.image' => 'Foto campaign wajib berupa gambar',
+            'foto.mimes' => 'Foto campaign wajib berupa file JPEG, PNG, JPG, GIF, atau SVG',
+            'foto.max' => 'Foto campaign wajib berukuran maksimal 5MB',
         ];
     }
 }

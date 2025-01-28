@@ -73,6 +73,13 @@ class CampaignController extends Controller
     {
         $campaigns = Campaign::findOrFail($id);
         $campaigns->update($request->validated());
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('uploads', $filename, 'public');
+            $campaigns->foto = $path;
+            $campaigns->save();
+        }
         return redirect()->route('campaign.index')->with('success','Campaign updated successfully');
     }
 

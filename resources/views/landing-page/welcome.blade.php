@@ -101,7 +101,7 @@
             <div>
                 <div class="card bg-base-100 image-full w-96 shadow-xl">
                     <figure>
-                        <img src="{{ asset('image/about.jpg') }}" alt="Shoes" />
+                        <img src="{{ \Illuminate\Support\Facades\Storage::url($campaign->foto) ?? 'https://placehold.co/600x400' }}" />
                     </figure>
                     <div class="card-body">
                         <h2 class="card-title">{{ $campaign->judul }}</h2>

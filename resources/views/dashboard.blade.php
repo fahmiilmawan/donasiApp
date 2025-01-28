@@ -8,23 +8,17 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <!-- Summary Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
                 <div class="card shadow-md bg-primary text-primary-content">
                     <div class="card-body">
                         <h2 class="card-title">Total Campaigns</h2>
                         <p>{{ $totalCampaigns }}</p>
                     </div>
                 </div>
-                <div class="card shadow-md bg-secondary text-secondary-content">
+                <div class="card shadow-md bg-success text-secondary-content">
                     <div class="card-body">
                         <h2 class="card-title">Total Donations</h2>
                         <p>Rp. {{ number_format($totalDonations) }}</p>
-                    </div>
-                </div>
-                <div class="card shadow-md bg-accent text-accent-content">
-                    <div class="card-body">
-                        <h2 class="card-title">Pending Donations</h2>
-                        <p>{{ $pendingDonations }}</p>
                     </div>
                 </div>
             </div>
@@ -61,7 +55,7 @@
                                         <td>{{ $donation->nama_donatur }}</td>
                                         <td>Rp. {{ number_format($donation->jumlah_donasi) }}</td>
                                         <td>
-                                            <span class="badge badge-{{ $donation->status == 'pending' ? 'warning' : ($donation->status == 'success' ? 'success' : 'error') }}">
+                                            <span class="badge badge-{{ $donation->status == 'pending' ? 'warning' : ($donation->status == 'success' ? 'success' : 'error') }} text-white">
                                                 {{ ucfirst($donation->status) }}
                                             </span>
                                         </td>

@@ -28,7 +28,7 @@ class StoreCampaignRequest extends FormRequest
             'donasi_terkumpul' => 'nullable',
             'tanggal_dimulai' => 'required',
             'tanggal_berakhir' => 'required',
-            // 'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
 
         ];
     }
@@ -41,9 +41,9 @@ class StoreCampaignRequest extends FormRequest
             'target_donasi.required' => 'Target Donasi Harus Diisi!',
             'tanggal_dimulai.required' => 'Tanggal Dimulai Harus Diisi!',
             'tanggal_berakhir.required' => 'Tanggal Berakhir Harus Diisi!',
-            // 'foto.image' => 'Foto Harus Berupa Gambar!',
-            // 'foto.mimes' => 'Foto Harus Berupa File JPEG, PNG, JPG, GIF, atau SVG!',
-            // 'foto.max' => 'Foto Harus Berukuran Maksimal 2MB!',
+            'foto.image' => 'Foto Harus Berupa Gambar!',
+            'foto.mimes' => 'Foto Harus Berupa File JPEG, PNG, JPG, GIF, atau SVG!',
+            'foto.max' => 'Foto Harus Berukuran Maksimal 5MB!',
         ];
     }
 }

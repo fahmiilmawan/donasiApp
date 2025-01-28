@@ -10,7 +10,7 @@
                 <div class="p-6 font-semibold text-gray-900 dark:text-gray-100">
                     <div class="flex flex-col items-center">
                         <img
-                            src="{{ $campaigns->foto ?? 'https://placehold.co/600x400' }}"
+                            src="{{ \Illuminate\Support\Facades\Storage::url($campaigns->foto) ?? 'https://placehold.co/600x400' }}"
                             alt="{{ $campaigns->judul }}"
                             class="rounded-lg w-full max-w-md object-cover h-64 mb-6"
                         >
